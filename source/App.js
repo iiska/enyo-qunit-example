@@ -4,6 +4,8 @@ enyo.kind({
   fit: true,
   components:[
     {kind: "HeaderBar"},
-    {kind: "Photos", fit: true},
+    {kind: enyo.Scroller, fit: true, components: [
+      {kind: "Photos", fit: true}
+    ]}
   ]
 });
