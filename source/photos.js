@@ -9,6 +9,7 @@ enyo.kind({
       url: "http://api.flickr.com/services/feeds/photos_public.gne",
       callbackName: "jsoncallback"
     }).response(enyo.bind(this, "renderPhotos"))
+      .error(enyo.bind(this, "renderError"))
       .go({
         id: "72148715@N00",
         per_page: 10,
@@ -30,6 +31,12 @@ enyo.kind({
       });
     }, this);
 
+    this.render();
+  },
+
+  renderError: function() {
+    this.destroyClientControls();
+    this.createComponent({name: "error", content: "Unable to load photo listing..."});
     this.render();
   }
 });
